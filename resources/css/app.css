@@ -4,6 +4,87 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-brand-primary: #0077b6;
+    --color-brand-secondary: #00b4d8;
+    --color-ink: #17212b;
+    --color-muted: #51606c;
+    --color-canvas: #f8fafc;
+    --color-line: #e5e7eb;
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --radius-card: 2rem;
+    --shadow-soft: 0 24px 80px -40px rgb(23 33 43 / 0.35);
+}
+
+:root {
+    color-scheme: light;
+    --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+    --focus-ring: 3px solid var(--color-brand-primary);
+}
+
+:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    z-index: 50;
+    top: 0.75rem;
+    left: var(--page-gutter);
+    transform: translateY(-160%);
+    border-radius: 0.5rem;
+    background: var(--color-brand-primary);
+    padding: 0.75rem 1rem;
+    color: white;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.header-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.75rem 0.35rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: default;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.hero-composition {
+    background: linear-gradient(140deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 44%, #00568f 100%);
+}
+
+.hero-composition::before {
+    content: '';
+    position: absolute;
+    width: 25rem;
+    height: 25rem;
+    top: -9rem;
+    right: -10rem;
+    border: 1px solid rgb(255 255 255 / 0.3);
+    border-radius: 50%;
+    box-shadow: 0 0 0 5rem rgb(255 255 255 / 0.045), 0 0 0 10rem rgb(255 255 255 / 0.035);
+}
+
+.hero-grid {
+    background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 3.5rem 3.5rem;
+    mask-image: linear-gradient(to top, transparent 15%, black 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
